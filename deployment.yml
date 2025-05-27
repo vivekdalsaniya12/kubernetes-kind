@@ -1,22 +1,22 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: nginx-deployment
+  name: facelog-deployment
   labels:
-    app: nginx
+    app: facelog
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: facelog
   template:
     metadata:
-      name: nginx-container
+      name: facelog-container
       labels:
-        app: nginx
+        app: facelog
     spec:
       containers:
-      - name: nginx-container
-        image: nginx
+      - name: facelog-container
+        image: vivekdalsaniya/facelog
         ports:
-        - containerPort: 80
+        - containerPort: 8000
