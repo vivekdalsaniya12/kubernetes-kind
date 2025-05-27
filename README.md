@@ -1,11 +1,10 @@
-
-# 🚀 Kubernetes NGINX Setup (Local KIND Cluster)
+# 🚀 FaceLog on Kubernetes(Local KIND Cluster)
 
 This project demonstrates a basic Kubernetes setup using **`kind` (Kubernetes IN Docker)** on a local machine. It includes:
 
-- ✅ A standalone NGINX Pod
-- ✅ A Deployment with 3 NGINX replicas
-- ✅ A NodePort Service exposing NGINX on port `30001`
+- ✅ A standalone FaceLog Pod
+- ✅ A Deployment with 3 FaceLog replicas
+- ✅ A NodePort Service exposing FaceLog on port `30001`
 
 ---
 
@@ -74,16 +73,16 @@ kind delete cluster --name my-cluster
 
 ## 📁 Step 4: Kubernetes Manifests in This Repo
 
-- `nginx-deployment.yaml` – Deployment with 3 replicas
-- `nginx-service.yaml` – NodePort service on port `30001`
+- `deployment.yaml` – Deployment with 3 replicas
+- `service.yaml` – NodePort service on port `30001`
 
 ---
 
 ## ⚙️ Step 5: Apply Resources
 
 ```bash
-kubectl apply -f nginx-deployment.yaml
-kubectl apply -f nginx-service.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
 ```
 
 ---
@@ -99,15 +98,15 @@ kubectl get svc
 Optional detailed checks:
 
 ```bash
-kubectl describe deployment nginx-deployment
-kubectl describe service nginx-service
+kubectl describe deployment deployment
+kubectl describe service service
 ```
 
 ---
 
-## 🌐 Step 7: Access NGINX Locally
+## 🌐 Step 7: Access FaceLog Locally
 
-Since `kind` runs in Docker, use the Docker host IP to access NGINX:
+Since `kind` runs in Docker, use the Docker host IP to access FaceLog:
 
 ```bash
 curl http://localhost:30001
@@ -124,8 +123,8 @@ http://localhost:30001
 ## 🧼 Step 8: Cleanup
 
 ```bash
-kubectl delete -f nginx-deployment.yaml
-kubectl delete -f nginx-service.yaml
+kubectl delete -f deployment.yaml
+kubectl delete -f service.yaml
 ```
 
 Or delete everything:
@@ -140,4 +139,3 @@ kubectl delete -f .
 
 - [KIND Documentation](https://kind.sigs.k8s.io/)
 - [Kubernetes Official Docs](https://kubernetes.io/docs/)
-
